@@ -59,8 +59,9 @@ def neb_interpolate(args):
     neb = NEB(images, k=args.spring)
     # 可以按照https://wiki.fysik.dtu.dk/ase/ase/neb.html，最终NEB中的image将被更新。
     if args.method == 'linear':
-        neb.interpolate()
+        neb.interpolate(method='linear')
     elif args.method == 'idpp':
+        neb.interpolate()
         # 可选优化算法。
         from ase.optimize import MDMin, BFGS, LBFGS, FIRE
         index = {'MDMin': MDMin, 'BFGS': BFGS, 'LBFGS': LBFGS, 'FIRE': FIRE}
